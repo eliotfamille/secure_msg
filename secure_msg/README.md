@@ -1,6 +1,8 @@
+Team Eliot: Tiavina et Eliot
+
 Pour installer ton projet sur une machine propre, voici la procédure complète, étape par étape, depuis zéro.
 1. Installer Python
-·	Sur Linux/base debian:
+Sur Linux/base debian:
 
 sudo apt update
 sudo apt install python3 python3-pip python3-venv
@@ -22,7 +24,6 @@ Toujours avec l'environnement activé, installez le moteur de cryptographie :
 pip install cryptography
 
 5. Vérification finale
-Tu peux maintenant lancer la démonstration :
 
 1. Générer les clés python3 
 main.py --action keygen 
