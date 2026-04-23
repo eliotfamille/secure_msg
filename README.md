@@ -1,8 +1,9 @@
 Pour installer ton projet sur une machine propre, voici la procédure complète, étape par étape, depuis zéro.
 1. Installer Python
 ·	Sur Linux/base debian:
-·	sudo apt update
-·	sudo apt install python3 python3-pip python3-venv
+
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
 
 2. Préparer le dossier de travail
 Place les fichiers de code (les 7 fichiers .py) dans un dossier dédié :
