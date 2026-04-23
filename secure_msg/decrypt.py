@@ -4,6 +4,7 @@ from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import hashes
 from verify import verify_signature
+
 def decrypt_message(packet: dict, private_key, sender_pub_key) -> str:
     # ① Reconstruire le contenu signé
     raw = json.dumps(
@@ -16,6 +17,7 @@ def decrypt_message(packet: dict, private_key, sender_pub_key) -> str:
 
     # ③ Déchiffrer la clé AES
     aes_key = private_key.decrypt(
+        #dechiffre le binaire
         base64.b64decode(packet['enc_aes_key']),
         padding.OAEP(
             mgf=padding.MGF1(hashes.SHA256()),

@@ -11,17 +11,24 @@ p.add_argument('--action', choices=['keygen','send','receive'], required=True)
 p.add_argument('--msg', help='Message à envoyer')
 p.add_argument('--packet', help='Fichier JSON reçu')
 args = p.parse_args()
+
+#cree des cle RSA public et prive
 if args.action == 'keygen':
     generate_rsa_keys()
+
+#crypte une message avec les cle RSA
 elif args.action == 'send':
     priv = load_private('private.pem')
     pub = load_public('public.pem')
     pkt = encrypt_message(args.msg, pub)
+    #cree un fichier json qui contien les donnees crypter
     raw = json.dumps(
         {k: pkt[k] for k in ["enc_aes_key","nonce","ciphertext"]}
     ).encode()
     pkt['signature'] = sign_message(raw, priv)
     print(json.dumps(pkt, indent=2))
+
+#decripte les donnee dans un fichie json avec les cles RSA
 elif args.action == 'receive':
     priv = load_private('private.pem')
     pub = load_public('public.pem')

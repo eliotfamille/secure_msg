@@ -5,16 +5,14 @@ from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives import hashes
 
 def encrypt_message(message: str, public_key) -> dict:
-    aes_key
-     = os.urandom(32)
+    aes_key = os.urandom(32) #genere un cle AES
      # clé AES 256 bits aléatoire
-    nonce
-     = os.urandom(12)
+    nonce = os.urandom(12) # Number used once
      # nonce GCM 96 bits
-    aesgcm
-     = AESGCM(aes_key)
-    ciphertext = aesgcm.encrypt(nonce, message.encode(), None)
+    aesgcm = AESGCM(aes_key)
+    ciphertext = aesgcm.encrypt(nonce, message.encode(), None)#chiffre en AES
 
+    #chiffre les cle AES avec la cle public RSA
     enc_aes_key = public_key.encrypt(
         aes_key,
         padding.OAEP(
@@ -22,8 +20,9 @@ def encrypt_message(message: str, public_key) -> dict:
             algorithm=hashes.SHA256(),
             label=None))
 
-return {
-    "enc_aes_key": base64.b64encode(enc_aes_key).decode(),
-    "nonce": base64.b64encode(nonce).decode(),
-    "ciphertext": base64.b64encode(ciphertext).decode()
-}
+    #transforme les donnees en binair
+    return {
+        "enc_aes_key": base64.b64encode(enc_aes_key).decode(),
+        "nonce": base64.b64encode(nonce).decode(),
+        "ciphertext": base64.b64encode(ciphertext).decode()
+    }
