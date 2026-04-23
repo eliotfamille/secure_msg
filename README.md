@@ -1,27 +1,27 @@
 Pour installer ton projet sur une machine propre, voici la procédure complète, étape par étape, depuis zéro.
-#1. Installer Python
+1. Installer Python
 ·	Sur Linux/base debian:
 
 sudo apt update
 sudo apt install python3 python3-pip python3-venv
 
-#2. Préparer le dossier de travail
+2. Préparer le dossier de travail
 Place les fichiers de code (les 7 fichiers .py) dans un dossier dédié :
 Bash
 mkdir mon_projet_crypto cd mon_projet_crypto
 
-#3. Créer un environnement isolé
+3. Créer un environnement isolé
 Cela permet d'installer les outils sans polluer ton système :
 
 python3 -m venv venv
 source venv/bin/activate 
 
-#4. Installer la bibliothèque nécessaire
+4. Installer la bibliothèque nécessaire
 Toujours avec l'environnement activé, installez le moteur de cryptographie :
 
 pip install cryptography
 
-#5. Vérification finale
+5. Vérification finale
 Tu peux maintenant lancer la démonstration :
 
 1. Générer les clés python3 
